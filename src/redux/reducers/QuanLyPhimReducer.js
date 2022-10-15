@@ -2,7 +2,9 @@ import {
   SET_DANH_SACH_PHIM,
   SET_PHIM_DANG_CHIEU,
   SET_PHIM_SAP_CHIEU,
+  SET_THONG_TIN_PHIM,
 } from "../actions/types/QuanLyPhimType";
+import { SET_CHI_TIET_PHIM } from "../actions/types/QuanLyRapType";
 
 const initialState = {
   // arrFilms : là state đầu tiên (props của MultipleRowSlick)
@@ -28,7 +30,9 @@ const initialState = {
   ],
   dangChieu: true,
   sapChieu: true,
-  arrFilmsDefault: [],
+  arrFilmsDefault: [], // data phim đầy đủ nhất
+  filmDetail: {},
+  thongTinPhim: {}, // lấy thông tin để edit phim trong admin
 };
 
 export const QuanLyPhimReducer = (state = initialState, action) => {
@@ -52,6 +56,15 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
       );
       return { ...state };
     }
+    case SET_CHI_TIET_PHIM: {
+      state.filmDetail = action.filmDetail;
+      return { ...state };
+    }
+    case SET_THONG_TIN_PHIM: {
+      state.thongTinPhim = action.thongTinPhim;
+      return { ...state };
+    }
+
     default:
       return { ...state };
   }

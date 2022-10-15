@@ -1,6 +1,8 @@
 import React from "react";
 import "./Film_Flip.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
+import { history } from "../../App";
 
 export default function Film_Flip(props) {
   const { item } = props;
@@ -45,8 +47,21 @@ export default function Film_Flip(props) {
           </div>
         </div>
       </div>
-      <div className=" text-center cursor-pointer py-2 bg-indigo-300  text-success-50 font-bold">
-        ĐẶT VÉ
+      {/* onclick để vào trang detail */}
+      {/* <div className=" text-center cursor-pointer py-2 bg-indigo-300 text-success-50 font-bold">
+      // vấn đề phải click vào chữ đặt vé mới access qua link detail
+        <NavLink to={`/detail/${item.maPhim}`}>ĐẶT VÉ</NavLink>
+      </div> */}
+      {/* Để fix vấn đề ta dùng thư viện history để link qua các trang */}
+
+      <div
+        onClick={() => {
+          history.push(`/detail/${item.maPhim}`);
+        }}
+      >
+        <div className=" text-center cursor-pointer py-2 bg-indigo-300 text-success-50 font-bold">
+          ĐẶT VÉ
+        </div>
       </div>
     </div>
   );

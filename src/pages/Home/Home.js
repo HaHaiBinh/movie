@@ -4,6 +4,7 @@ import HomeMenu from "./HomeMenu/HomeMenu";
 import MultipleRowSlick from "../../components/React_Slick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimAction";
 import { layDanhSachHeThongRapAction } from "../../redux/actions/QuanLyRapAction";
+import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
 
 export default function Home(props) {
   //   console.log(props); props.history/location/match : nhờ có propsRoute trong HomeTemplate
@@ -29,6 +30,8 @@ export default function Home(props) {
 
   return (
     <div>
+      <HomeCarousel />
+
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto w-4/5 ">
           <MultipleRowSlick arrFilms={arrFilms} />

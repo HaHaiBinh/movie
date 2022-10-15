@@ -12,6 +12,18 @@ export class QuanLyRapService extends baseService {
       `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP_ID}`
     );
   };
+  layThongTinLichChieuPhim = (maPhim) => {
+    return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
+  };
+  layThongTinHeThongRap = () => {
+    // admin -> dùng useState chứ k dùng redux
+    return this.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
+  };
+  layThongTinCumRapTheoHeThong = (maHeThongRap) => {
+    return this.get(
+      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+    );
+  };
 }
 
 export const quanLyRapService = new QuanLyRapService();

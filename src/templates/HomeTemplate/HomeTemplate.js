@@ -1,5 +1,6 @@
-import { Fragment } from "react";
-import { Route } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { Redirect, Route } from "react-router-dom";
+import { USER_LOGIN } from "../../util/settings/config";
 import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
 import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel";
@@ -9,6 +10,10 @@ export const HomeTemplate = (props) => {
   // đây là phần dùng chung : HomeTemplate
   // ...restProps = path,exact : xác định đúng đường dẫn -> đúng mới load Route còn sai thì bỏ qua
   const { Component, ...restProps } = props;
+  //  render thì luôn luôn scrool lên đầu trang, k bị lặp vô tận (k setState hay dispatch)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <Route
@@ -27,7 +32,7 @@ export const HomeTemplate = (props) => {
         return (
           <Fragment>
             <Header {...propsRoute} />
-            <HomeCarousel {...propsRoute} />
+            {/* <HomeCarousel {...propsRoute} /> */}
 
             {/* thành phần động */}
             <Component {...propsRoute} />
